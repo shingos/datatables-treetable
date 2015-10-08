@@ -1,2 +1,2 @@
 # datatables-treetable
-
+It combines the [jQuery treetable](http://ludo.cubicphuse.nl/jquery-treetable/) to [DataTables](https://datatables.net/), and then realized the Tree display having a function of DataTables and jQuery treetable.
