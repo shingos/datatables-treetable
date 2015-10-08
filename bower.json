@@ -1,0 +1,22 @@
+{
+  "name": "datatables-treetable",
+  "version": "0.0.1",
+  "main": [
+    "css/treeTable.dataTables.css",
+    "js/dataTables.treeTable.js"
+  ],
+  "homepage": "https://github.com/shingos/datatables-treetable",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"jquery": ">=1.7.0",
+    "datatables": ">= 1.10.8",
+    "jquery-treetable": ">= 3.2"
+  }
+}

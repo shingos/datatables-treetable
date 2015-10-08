@@ -1,0 +1,10 @@
+table.dt-treetable tr.branch.collapsed .indenter a:before {
+  font-family: 'Glyphicons Halflings';
+  /* content: "\e158"; */
+  content: "\e250";
+}
+table.dt-treetable tr.branch.expanded .indenter a:before {
+  font-family: 'Glyphicons Halflings';
+  /* content: "\e159"; */
+  content: "\e252";
+}

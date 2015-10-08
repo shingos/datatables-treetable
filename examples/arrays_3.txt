@@ -1,0 +1,6 @@
+{
+    "data": [
+		{"col1":"Node 3.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "ttId":"3.1", "ttParentId":"3", "ttBranch":true},
+		{"col1":"Node 3.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "ttId":"3.2", "ttParentId":"3"}
+	]
+}

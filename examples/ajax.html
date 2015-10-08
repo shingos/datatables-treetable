@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<title>DataTables example</title>
+
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="./jquery.treetable.css" />
+		<link rel="stylesheet" type="text/css" href="../css/treeTable.dataTables.css">
+
+		<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="./jquery.treetable.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/dataTables.treeTable.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+
+				var table = $('#example').DataTable({
+					ajax: './arrays.txt',
+	        columns: [
+						{ data: "col1" },
+						{ data: "col2" }
+	        ],
+					pageLength: 5,
+					lengthMenu: [3, 5, 10, 25, 50],
+					ordering: false,
+					treetable: {
+						expandable: true,
+						onNodeExpand: function() {
+      				var node = this;
+
+							$.getJSON('./arrays_' + node.id + '.txt')
+							  .done(function(json) {
+							    table.treeTable.addChildren(node, json.data);
+							  } )
+							  .fail(function(e) {
+							    console.log("error", e);
+							  } )
+						  ;
+
+						}
+					}
+				} );
+
+			} );
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			
+<table id="example" class="display" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Tree column</th>
+			<th>Additional data</th>
+		</tr>
+	</thead>
+</table>
+			
+		</div>
+	</body>
+</html>

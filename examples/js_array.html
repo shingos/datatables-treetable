@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		
+		<title>DataTables example</title>
+
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="./jquery.treetable.css" />
+		<link rel="stylesheet" type="text/css" href="../css/treeTable.dataTables.css">
+
+		<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="./jquery.treetable.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/dataTables.treeTable.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			var dataSet = [
+				{"col1":"Node 1: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"1"},
+				{"col1":"Node 1.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"1.1", "parent":"1"},
+				{"col1":"Node 1.1.1: I am part of the tree too!", "col2":"That's it!", "id":"1.1.1", "parent":"1.1"},
+				{"col1":"Node 2: I am another root node, but without children", "col2":"Hurray!", "id":"2"},
+				{"col1":"Node 3: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"3"},
+				{"col1":"Node 3.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"3.1", "parent":"3"},
+				{"col1":"Node 3.1.1: I am part of the tree too!", "col2":"That's it!", "id":"3.1.1", "parent":"3.1"},
+				{"col1":"Node 3.1.2: I am part of the tree too!", "col2":"That's it!", "id":"3.1.2", "parent":"3.1"},
+				{"col1":"Node 3.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"3.2", "parent":"3"},
+				{"col1":"Node 4: I am another root node, but without children", "col2":"Hurray!", "id":"4"},
+				{"col1":"Node 5: I am another root node, but without children", "col2":"Hurray!", "id":"5"},
+				{"col1":"Node 6: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"6"},
+				{"col1":"Node 6.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"6.1", "parent":"6"},
+				{"col1":"Node 6.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"6.2", "parent":"6"},
+				{"col1":"Node 7: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"7"},
+				{"col1":"Node 7.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"7.1", "parent":"7"},
+				{"col1":"Node 7.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"7.2", "parent":"7"},
+				{"col1":"Node 7.1.1: I am part of the tree too!", "col2":"That's it!", "id":"7.1.1", "parent":"7.1"},
+				{"col1":"Node 7.1.2: I am part of the tree too!", "col2":"That's it!", "id":"7.1.2", "parent":"7.1"},
+				{"col1":"Node 8: I am another root node, but without children", "col2":"Hurray!", "id":"8"},
+				{"col1":"Node 9: I am another root node, but without children", "col2":"Hurray!", "id":"9"},
+				{"col1":"Node 10: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"10"},
+				{"col1":"Node 10.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"10.1", "parent":"10"},
+				{"col1":"Node 10.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"10.2", "parent":"10"},
+				{"col1":"Node 11: I am another root node, but without children", "col2":"Hurray!", "id":"11"},
+				{"col1":"Node 12: Click on the icon in front of me to expand this branch.", "col2":"I live in the second column.", "id":"12"},
+				{"col1":"Node 12.1: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"12.1", "parent":"12"},
+				{"col1":"Node 12.2: Look, I am a table row <em>and</em> I am part of a tree!", "col2":"Interesting.", "id":"12.2", "parent":"12"},
+			];
+
+			$(document).ready(function() {
+
+				$('#example').DataTable({
+					data: dataSet,
+	        columns: [
+						{ data: "col1" },
+						{ data: "col2" }
+	        ],
+					pageLength: 5,
+					lengthMenu: [3, 5, 10, 25, 50],
+					ordering: false,
+					treetable: {
+						expandable: true,
+						nodeIdAttr: "id",
+						parentIdAttr: "parent",
+						onNodeCollapse: function() {
+							console.log('onNodeCollapse');
+						},
+						onNodeExpand: function() {
+							console.log('onNodeExpand');
+						}
+					},
+createdRow: function (row, data, idx) {
+	console.log('createdRow');
+}
+				} );
+
+			} );
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			
+<table id="example" class="display" cellspacing="0" width="100%">
+	<thead>
+		<tr>
+			<th>Tree column</th>
+			<th>Additional data</th>
+		</tr>
+	</thead>
+</table>
+			
+		</div>
+	</body>
+</html>

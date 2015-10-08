@@ -1,0 +1,6 @@
+table.dt-treetable tr.branch.collapsed .indenter a:before {
+  content: "►"
+}
+table.dt-treetable tr.branch.expanded .indenter a:before {
+  content: "▾"
+}
